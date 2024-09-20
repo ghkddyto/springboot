@@ -1,4 +1,4 @@
-package me.yosae.springbootdeveloper;
+package me.yosae.contoller;
 
 import me.yosae.domain.Member;
 import me.yosae.service.TestService;
@@ -12,6 +12,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/test")
 public class TestController {
+    @Autowired
+    TestService testService;
+
     @GetMapping("/test1")
     public String test(){
         record TESTITEM(Long id, String name){}
@@ -19,11 +22,8 @@ public class TestController {
         return testitem.name;
     }
 
-    @Autowired
-    TestService testService;
-
-    @GetMapping("test")
-    public List<Member> get AllMembers(){
+    @GetMapping("/test2")
+    public List<Member> getAllMembers(){
         List<Member> members = testService.getAllMembers();
         return members;
     }
