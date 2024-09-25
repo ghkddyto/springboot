@@ -4,7 +4,7 @@ public class JUnitCycleTest {
 
     @BeforeAll
     static void beforeAll(){
-        System.out.print("@BeforeAll (가장 먼저 실행)");
+        System.out.println("@BeforeAll (가장 먼저 실행)");
     }
 
     @BeforeEach
