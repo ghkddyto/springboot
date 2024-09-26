@@ -3,9 +3,8 @@ package me.yosae.contoller;
 import me.yosae.domain.Member;
 import me.yosae.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +26,33 @@ public class TestController {
         List<Member> members = testService.getAllMembers();
         return members;
     }
+
+    @GetMapping("/test3")
+    public String test3(){
+        return "https://us05web.zoom.us/j/84866422404?pwd=EKDfuIOISORRSy8wAkxt7jo80ek2bQ.1#success";
+    }
+
+    @GetMapping("/quiz")
+    public ResponseEntity<String> quiz(@RequestParam("code") int code){
+        switch (code){
+            case 1:
+                return ResponseEntity.created(null).body("Created!");
+            case 2:
+                return ResponseEntity.badRequest().body("Bad Request");
+            default:
+                return ResponseEntity.ok().body("OK!");
+        }
+    }
+
+    @PostMapping("/quiz")
+    public ResponseEntity<String> quiz2(@RequestBody Code code){
+        switch (code.value()){
+            case 1:
+                return ResponseEntity.status(403).body("forbidden!");
+            default:
+                return ResponseEntity.ok().body("OK!");
+        }
+    }
 }
+
+record Code(int value){}
