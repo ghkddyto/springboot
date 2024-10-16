@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import me.yosae.domain.Article;
 import me.yosae.dto.AddArticleRequest;
 import me.yosae.dto.ArticleResponse;
+import me.yosae.dto.UpdateArticleRequest;
 import me.yosae.service.BlogService;
+import org.hibernate.sql.Update;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,5 +44,17 @@ public class BlogApiContorller {
         Article article = blogService.findById(id);
 
         return ResponseEntity.ok().body(new ArticleResponse(article));
+    }
+
+    @DeleteMapping("/articles/{id}")
+    public ResponseEntity<Void> deleteArticle(@PathVariable long id){
+        blogService.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/articles/{id}")
+    public ResponseEntity<Article> updateArticle(@PathVariable long id, @RequestBody UpdateArticleRequest request){
+        Article updatedArticle = blogService.update(id, request);
+        return ResponseEntity.ok().body(updatedArticle);
     }
 }
