@@ -14,14 +14,14 @@ public class Article {
     private Long id;
 
     @Column(name = "title", nullable = false)
-    private String tilte;
+    private String title;
 
     @Column(name = "content", nullable = false)
     private String content;
 
     @Builder
     public Article(String title, String content){
-        this.tilte = title;
+        this.title = title;
         this.content = content;
     }
 

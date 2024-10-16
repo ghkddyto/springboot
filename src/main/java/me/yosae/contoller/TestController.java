@@ -29,7 +29,9 @@ public class TestController {
 
     @GetMapping("/test3")
     public String test3(){
-        return "https://us05web.zoom.us/j/84866422404?pwd=EKDfuIOISORRSy8wAkxt7jo80ek2bQ.1#success";
+        Number testNumber1;
+        testNumber1 = 33.3;
+        return testNumber1.toString();
     }
 
     @GetMapping("/quiz")
