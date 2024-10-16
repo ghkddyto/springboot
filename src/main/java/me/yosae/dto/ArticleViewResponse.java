@@ -1,20 +1,23 @@
 package me.yosae.dto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import me.yosae.domain.Article;
 
 import java.time.LocalDateTime;
 
 @Getter
+@NoArgsConstructor
 public class ArticleViewResponse {
-    private final long id;
-    private final String title;
-    private final String content;
+    private long id;
+    private String title;
+    private String content;
     private LocalDateTime createdAt;
     public ArticleViewResponse(Article article){
         this.id = article.getId();
         this.title = article.getTitle();
         this.content = article.getContent();
-        this.createdAt = article.getCreateAt();
+        this.createdAt = article.getCreatedAt();
     }
 }

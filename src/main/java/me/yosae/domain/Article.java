@@ -27,7 +27,7 @@ public class Article {
 
     @CreatedDate
     @Column(name ="created_at")
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
 
     @LastModifiedDate //엔티티가 수정될 때 수정 시간 저장
     @Column(name = "updated_at")
