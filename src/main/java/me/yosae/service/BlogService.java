@@ -24,4 +24,8 @@ public class BlogService {
         return blogRepository.findAll();
     }
 
+    //블로그 글 불러오기
+    public Article findById(Long id){ return blogRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("not foubd: " + id));}
+
 }
