@@ -2,6 +2,7 @@ package me.yosae.config;
 
 import lombok.RequiredArgsConstructor;
 import me.yosae.service.UserDetailService;
+import me.yosae.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -57,7 +58,7 @@ public class WebSecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailService userDetailService) throws Exception{
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userService); //사용자 정보 서비스 설정
+        authProvider.setUserDetailsService(userDetailService); //사용자 정보 서비스 설정
         authProvider.setPasswordEncoder(bCryptPasswordEncoder);
         return new ProviderManager(authProvider);
     }
